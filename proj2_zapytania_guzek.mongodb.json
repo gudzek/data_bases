@@ -1,0 +1,54 @@
+Damian Guzek s167911
+1.================================================================================
+db.zoo.update({id:"karma"},{$inc: {"hedera":-100}})
+db.zoo.update({id:"karma"},{$inc: {"allium":-100}})
+db.zoo.update({id:"karma"},{$inc: {"canna":-100}})
+db.zoo.update({id:"karma"},{$inc: {"dolichos":-100}})
+db.zoo.update({id:"karma"},{$inc: {"lobelia":-100}})
+db.zoo.update({id:"karma"},{$inc: {"pinus":-100}})
+db.zoo.update({id:"karma"},{$inc: {"vinica":-100}})
+db.zoo.update({id:"karma"},{$inc: {"phormium":-100}})
+db.zoo.update({id:"karma"},{$inc: {"lupinus":-100}})
+db.zoo.update({id:"karma"},{$inc: {"wolowina":-100}})
+
+db.zoo.find({$and:[{"hedera":{$lt:0}},{"id":"karma"}]},{hedera:1, _id:0})
+db.zoo.find({$and:[{"allium":{$lt:0}},{"id":"karma"}]},{allium:1, _id:0})
+db.zoo.find({$and:[{"canna":{$lt:0}},{"id":"karma"}]},{canna:1, _id:0})
+db.zoo.find({$and:[{"dolichos":{$lt:0}},{"id":"karma"}]},{dolichos:1, _id:0})
+db.zoo.find({$and:[{"lobelia":{$lt:0}},{"id":"karma"}]},{lobelia:1, _id:0})
+db.zoo.find({$and:[{"pinus":{$lt:0}},{"id":"karma"}]},{pinus:1, _id:0})
+db.zoo.find({$and:[{"vinica":{$lt:0}},{"id":"karma"}]},{vinica:1, _id:0})
+db.zoo.find({$and:[{"phormium":{$lt:0}},{"id":"karma"}]},{phormium:1, _id:0})
+db.zoo.find({$and:[{"lupinus":{$lt:0}},{"id":"karma"}]},{lupinus:1, _id:0})
+db.zoo.find({$and:[{"wolowina":{$lt:0}},{"id":"karma"}]},{wolowina:1, _id:0})
+
+2.=================================================================================
+db.zoo.find({
+    $or:[{
+    szczepienie1: {
+        $gte: ISODate("2019-09-01T00:00:00.000Z"),
+        $lt: ISODate("2019-12-31T00:00:00.000Z")}},
+    {
+    szczepienie2: {
+        $gte: ISODate("2019-09-01T00:00:00.000Z"),
+        $lt: ISODate("2019-12-31T00:00:00.000Z")}}]   
+})
+3.=================================================================================   
+db.zoo.find({"id":10002},{imie:1,nazwisko:1,telefon:1, _id:0, id:1})
+4.=================================================================================
+db.zoo.find({"id":"karma"},{lobelia:1,vinica:1, _id:0})
+5.=================================================================================
+db.zoo.find({rok_urodzenia:{$gt: 2013}},{ _id:0,opiekun:1}).sort({"opiekun":-1})
+db.zoo.find({"id":{$in:[10004, 10005, 10008]}},{_id:0,imie:1,nazwisko:1,telefon:1})
+6.=================================================================================
+db.zoo.find({darownizna:{$gt: 5}},{_id:0,darownizna:1}).sort({darownizna:-1}).limit(1)
+db.zoo.find({darownizna:{$gt: 5}},{_id:0,darownizna:1}).sort({darownizna:1}).limit(1)
+db.zoo.find({darownizna:{$gt: 3000}}).count()
+db.zoo.find({darownizna:{$lt: 3000}}).count()
+7.=================================================================================
+db.zoo.find({"sekcja":"ssaki"}).count()
+db.zoo.find({"sekcja":"ptaki"}).count()
+db.zoo.find({"sekcja":"gady"}).count()
+8.=================================================================================
+db.zoo.find( {"wycieczka4":{$exists:1}}, {_id:0,imie:1,nazwisko:1} )
+####################################################################################
